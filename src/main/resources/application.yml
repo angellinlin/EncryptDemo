@@ -1,12 +1,9 @@
-
-
-
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test
-    username: root
-    password: 123456
+    url: jdbc:mysql://11.183.30.49:3306/ledger_fufu?zeroDateTimeBehavior=convertToNull&characterEncoding=utf8&useUnicode=true&autoReconnect=true&failOverReadOnly=false&connectTimeout=2000&socketTimeout=30000&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: ledger_fufu_push
+    password: c7Gy9>9EI
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
   configuration:

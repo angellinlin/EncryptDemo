@@ -2,8 +2,12 @@ package com.zuiyu.encryptdemo.encry.service;
 
 
 import com.zuiyu.encryptdemo.encry.bean.Dept;
+import com.zuiyu.encryptdemo.encry.bean.InvCusComplaint;
+import com.zuiyu.encryptdemo.encry.bean.InvCusEventInfo;
 import com.zuiyu.encryptdemo.encry.bean.User;
 import com.zuiyu.encryptdemo.encry.dao.DeptMapper;
+import com.zuiyu.encryptdemo.encry.dao.InvCusComplaintMapper;
+import com.zuiyu.encryptdemo.encry.dao.InvCusEventInfoMapper;
 import com.zuiyu.encryptdemo.encry.dao.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +19,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
@@ -32,31 +37,58 @@ public class TestService {
     @Autowired
     private DeptMapper deptMapper;
     @Autowired
+    private InvCusComplaintMapper invCusComplaintMapper;
+    @Autowired
+    private InvCusEventInfoMapper invCusEventInfoMapper;
+    @Autowired
     private Test2Service test2Service;
     @Async
     public void test(){
         log.info("TestService 方法执行，执行线程:{}",Thread.currentThread().getName());
-        User user = new User();
-        user.setName("zuiyu");
-        user.setAge(18);
-        user.setDeptId(1);
-        userMapper.insert(user);
         test2();
+        InvCusComplaint user = new InvCusComplaint();
+        user.setComplaintContent("zuiyu");
+        user.setId(189);
+        user.setCreatedDate(new Date());
+        user.setComplaintFlag("gg");
+        user.setComplaintType("gg");
+        user.setJdPin("gg");
+        user.setOrgName("gg");
+        user.setInvestorLoanIds("ggg");
+        user.setYn(1);
+        user.setOrgId("gg");
+        user.setProcessId("gs");
+        invCusComplaintMapper.insert(user);
+
         int a = 22/0;
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
+    @Async
     public void test2(){
         log.info("Test2Service 异步方法执行，执行线程:{}",Thread.currentThread().getName());
-        User user = new User();
-        user.setName("zuiyu Test2Service");
-        user.setAge(18);
-        user.setDeptId(1);
-        userMapper.insert(user);
-        Dept dept = new Dept();
-        dept.setId(1);
-        dept.setName("dept2");
-        deptMapper.insert(dept);
+        InvCusComplaint user = new InvCusComplaint();
+        user.setComplaintContent("zuiyu333333");
+        user.setId(183);
+        user.setCreatedDate(new Date());
+        user.setComplaintFlag("gg");
+        user.setComplaintType("gg");
+        user.setJdPin("gg");
+        user.setOrgName("gg");
+        user.setInvestorLoanIds("ggg");
+        user.setYn(1);
+        user.setOrgId("gg");
+        user.setProcessId("gs");
+        invCusComplaintMapper.insert(user);
+//        InvCusEventInfo dept = new InvCusEventInfo();
+//        dept.setId(34L);
+//        dept.setAttachment("dept2");
+//        dept.setComplaintInfo("gg");
+//        dept.setComplaintType("gg");
+//        dept.setCreatedTime(new Date());
+//        dept.setComplaintSource("gg");
+//        dept.setOrgName("gg");
+//        invCusEventInfoMapper.insert(dept);
         int a = 22/0;
     }
 

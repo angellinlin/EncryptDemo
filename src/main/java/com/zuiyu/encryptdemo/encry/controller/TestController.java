@@ -20,7 +20,7 @@ public class TestController {
     private TestService testService;
     @GetMapping("/test")
     public Object test() throws Exception {
-        testService.test();
+        testService.test2();
         return "success";
     }
 }
